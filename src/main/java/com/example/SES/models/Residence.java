@@ -28,6 +28,17 @@ public class Residence {
     @NotBlank
     private String price;
 
+    @NotBlank
+    private String description;
+
+
+    private int area;
+
+    @NotBlank
+    private String city;
+
+    @NotBlank
+    private String country;
 
     @NotBlank
     private String location;
@@ -41,18 +52,17 @@ public class Residence {
     @ElementCollection
     private List<String> images;
 
-
-
-
-    public Residence(Long id, String ownerEmail, String price, String location, int floorCount, List<String> services, List<String> images) {
+    public Residence(Long id, String ownerEmail, String price, String description, int area, String city, String country, String location, int floorCount, List<String> services, List<String> images) {
         this.id = id;
         this.ownerEmail = ownerEmail;
         this.price = price;
+        this.description = description;
+        this.area = area;
+        this.city = city;
+        this.country = country;
         this.location = location;
         this.floorCount = floorCount;
         this.services = services;
         this.images = images;
     }
-
-
 }

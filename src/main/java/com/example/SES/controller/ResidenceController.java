@@ -18,7 +18,7 @@ public class ResidenceController {
     private ResidenceService residenceService;
 
 
-    @GetMapping("/")
+    @GetMapping("/getAll")
     public @ResponseBody ResponseEntity<?> getAllResidences() {
         return ResponseEntity.ok(residenceService.getAllResidences());
     }
@@ -40,6 +40,10 @@ public class ResidenceController {
                 .ownerEmail(residencePayload.getOwnerEmail())
                 .price(residencePayload.getPrice())
                 .location(residencePayload.getLocation())
+                .country(residencePayload.getCountry())
+                .city(residencePayload.getCity())
+                .area(residencePayload.getArea())
+                .description(residencePayload.getDescription())
                 .floorCount(residencePayload.getFloorCount())
                 .services(residencePayload.getServices())
                 .images(residencePayload.getImages())

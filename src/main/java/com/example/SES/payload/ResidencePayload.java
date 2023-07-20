@@ -20,8 +20,16 @@ public class ResidencePayload {
     private String ownerEmail;
 
     private String price;
+    private String country;
+
+    private String city;
+
 
     private String location;
+
+    private String description;
+
+    private int area;
 
     @Min(1)
     private int floorCount;
