@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/Fur")
 @CrossOrigin(originPatterns = "*")
@@ -30,6 +32,14 @@ public class sellFurnitureContorller {
         return ResponseEntity.ok(furSer.getAllFur());
     }
 
+
+
+    @GetMapping("/getFurtype")
+    public @ResponseBody
+    ResponseEntity<List<sellFurniture>> getFurnitureByType(@RequestParam String type) {
+        List<sellFurniture> furnitureList = furSer.getFurnitureByType(type);
+        return ResponseEntity.ok(furnitureList);
+    }
 
 
     @PostMapping( value="/saveFur",consumes = {"application/json"})
