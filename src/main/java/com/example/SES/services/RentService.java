@@ -1,4 +1,5 @@
 package com.example.SES.services;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -23,6 +24,10 @@ public class RentService {
     @Autowired
     private RentRepo rentrepo;
 
+    @Autowired
+    public RentService(RentRepo rentrepo) {
+        this.rentrepo = rentrepo;
+    }
     public List<Rent> getAllRents() {
 
         return rentrepo.findAll();
@@ -49,16 +54,16 @@ public class RentService {
     }
 
 
-    public String getRentDateById(Long id) {
-        return rentrepo.findById(id)
-                .map(Rent::getDate)
-                .orElseThrow(() -> new RuntimeException("Rent not found with id " + id));
+
+    public List<String> getAllDatesByNumber(String number) {
+        List<Rent> rents = rentrepo.findByNumber(number);
+        return rents.stream().map(Rent::getDate).collect(Collectors.toList());
     }
 
-
-
-
-
+    public boolean isRentDateAvailable(String number, String rentDate) {
+        List<Rent> rents = rentrepo.findByNumberAndDate(number, rentDate);
+        return rents.isEmpty();
+    }
 
 
 }

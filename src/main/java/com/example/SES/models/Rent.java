@@ -26,23 +26,14 @@ public class Rent {
     @NotBlank
     private String ownerEmail;
 
-
-
-
     @NotBlank
     private String date;
 
     @NotBlank
     private String number;
 
-
     @NotBlank
     private String noMonth;
-
-
-
-
-
 
     public Rent(Long ID,String email1, String email2, String date, String id, String month) {
         this.id=ID;
@@ -52,6 +43,4 @@ public class Rent {
         this.number = id;
         this.noMonth = month;
     }
-
-
 }
