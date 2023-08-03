@@ -20,19 +20,20 @@ public class ResidenceService {
 
     public void addResidence(Residence residence){
          residenceRepo.save(residence);
-    }
 
-    public Optional<Residence> tempGetResidence(Long id){
+
+    public Optional<Residence> tempGetResidence(Long id) {
         return residenceRepo.findById(id);
     }
 
 
+    public Optional<List<Residence>> getOwnerResidences(String ownerEmail) {
 
-    public Optional<List<Residence>> getOwnerResidences(String ownerEmail){
 
 
 
         return residenceRepo.findByOwnerEmailAndAdminApproval(ownerEmail,1);
+   
+
     }
 
-}
