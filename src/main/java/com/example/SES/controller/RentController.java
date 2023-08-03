@@ -10,8 +10,15 @@ import com.example.SES.services.RentService;
 import com.example.SES.services.UserService;
 import jakarta.validation.Payload;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/rent")
@@ -23,6 +30,11 @@ public class RentController {
     @Autowired
     private RentRepo rentrepo;
 
+    @Autowired
+    public RentController(RentService rentservice) {
+        this.rentservice = rentservice;
+    }
+
     @GetMapping("/getRent")
     public @ResponseBody ResponseEntity<?> getAllRents() {
         return ResponseEntity.ok(rentservice.getAllRents());
@@ -33,9 +45,10 @@ public class RentController {
         return ResponseEntity.ok(rentservice.getAllRentDates());
     }
 
-    @GetMapping("/getRentDate")
-    public @ResponseBody ResponseEntity<?> testGetResidence(@RequestParam Long id) {
-        return ResponseEntity.ok(rentservice.getRentDateById(id));
+    @GetMapping("/dates")
+    public @ResponseBody ResponseEntity<?> getDatesByNumber(@RequestParam String number) {
+
+        return ResponseEntity.ok(rentservice.getAllDatesByNumber(number));
     }
 
 

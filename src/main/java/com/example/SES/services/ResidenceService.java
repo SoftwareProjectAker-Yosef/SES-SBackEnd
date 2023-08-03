@@ -28,7 +28,11 @@ public class ResidenceService {
     }
 
 
+
     public Optional<List<Residence>> getOwnerResidences(String ownerEmail){
+
+    public Optional<Residence> getOwnerResidences(String ownerEmail){
+
         return residenceRepo.findByOwnerEmail(ownerEmail);
     }
 
