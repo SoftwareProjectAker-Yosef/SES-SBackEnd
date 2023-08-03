@@ -23,6 +23,8 @@ public class ResidencePayload {
     private String country;
 
     private String city;
+    private int bedrooms;
+    private int bathrooms;
 
 
     private String location;
