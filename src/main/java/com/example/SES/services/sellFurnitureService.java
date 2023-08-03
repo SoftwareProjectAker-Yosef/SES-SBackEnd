@@ -31,6 +31,9 @@ public class sellFurnitureService {
         return furRepo.findByEmail(email).orElseGet(()->sellFurniture.builder().build());
 
     }
+    public List<sellFurniture> getFurnitureByType(String type) {
+        return furRepo.findByType(type);
+    }
 
     public void addFur(sellFurniture Fur) {
 

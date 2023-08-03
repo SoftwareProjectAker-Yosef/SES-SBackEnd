@@ -14,26 +14,26 @@ public class ResidenceService {
     private ResidenceRepo residenceRepo;
 
 
-    public List<Residence> getAllResidences(){
+    public List<Residence> getAllResidences() {
         return residenceRepo.findAll();
     }
 
 
-    public void addResidence(Residence residence){
-         residenceRepo.save(residence);
+    public void addResidence(Residence residence) {
+        residenceRepo.save(residence);
     }
 
-    public Optional<Residence> tempGetResidence(Long id){
+    public Optional<Residence> tempGetResidence(Long id) {
         return residenceRepo.findById(id);
     }
 
 
+    public Optional<List<Residence>> getOwnerResidences(String ownerEmail) {
 
-    public Optional<List<Residence>> getOwnerResidences(String ownerEmail){
 
-    public Optional<Residence> getOwnerResidences(String ownerEmail){
 
-        return residenceRepo.findByOwnerEmail(ownerEmail);
+            return residenceRepo.findByOwnerEmail(ownerEmail);
+        }
+
     }
 
-}
