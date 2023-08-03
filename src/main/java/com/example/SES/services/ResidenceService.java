@@ -14,14 +14,13 @@ public class ResidenceService {
     private ResidenceRepo residenceRepo;
 
 
-    public List<Residence> getAllResidences() {
-        return residenceRepo.findAll();
+    public Optional<List<Residence>> getAllResidences(int ans){
+        return residenceRepo.findByAdminApproval(ans);
     }
 
+    public void addResidence(Residence residence){
+         residenceRepo.save(residence);
 
-    public void addResidence(Residence residence) {
-        residenceRepo.save(residence);
-    }
 
     public Optional<Residence> tempGetResidence(Long id) {
         return residenceRepo.findById(id);
@@ -32,8 +31,9 @@ public class ResidenceService {
 
 
 
-            return residenceRepo.findByOwnerEmail(ownerEmail);
-        }
+
+        return residenceRepo.findByOwnerEmailAndAdminApproval(ownerEmail,1);
+   
 
     }
 

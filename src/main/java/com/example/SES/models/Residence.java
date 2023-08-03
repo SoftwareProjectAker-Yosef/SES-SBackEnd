@@ -34,6 +34,9 @@ public class Residence {
 
     private int area;
 
+    private int adminApproval;
+
+
     @NotBlank
     private String city;
 
@@ -58,12 +61,13 @@ public class Residence {
     @ElementCollection
     private List<String> images;
 
-    public Residence(Long id, String ownerEmail, String price, String description, int area, String city, String country, String location, int floorCount, int bathrooms, int bedrooms, List<String> services, List<String> images) {
+    public Residence(Long id, String ownerEmail, String price, String description, int area, int adminApproval, String city, String country, String location, int floorCount, int bathrooms, int bedrooms, List<String> services, List<String> images) {
         this.id = id;
         this.ownerEmail = ownerEmail;
         this.price = price;
         this.description = description;
         this.area = area;
+        this.adminApproval = adminApproval;
         this.city = city;
         this.country = country;
         this.location = location;
