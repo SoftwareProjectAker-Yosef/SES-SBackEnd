@@ -8,12 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ResidenceRepo extends JpaRepository<Residence,Long> {
-    Optional<List<Residence>> findByOwnerEmail(String email);
-  
-import java.util.Optional;
+    Optional<List<Residence>> findByOwnerEmailAndAdminApproval(String email, int ans);
 
-public interface ResidenceRepo extends JpaRepository<Residence,Long> {
-    Optional<Residence> findByOwnerEmail(String email);
+    Optional<List<Residence>> findByAdminApproval(int ans);
+
+
+
+
 
 
 }

@@ -25,6 +25,7 @@ public class ResidencePayload {
     private String city;
     private int bedrooms;
     private int bathrooms;
+    private int adminApproval;
 
 
     private String location;

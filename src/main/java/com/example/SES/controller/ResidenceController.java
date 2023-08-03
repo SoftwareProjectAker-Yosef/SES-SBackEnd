@@ -20,9 +20,13 @@ public class ResidenceController {
 
     @GetMapping("/getAll")
     public @ResponseBody ResponseEntity<?> getAllResidences() {
-        return ResponseEntity.ok(residenceService.getAllResidences());
+        return ResponseEntity.ok(residenceService.getAllResidences(1));
     }
 
+    @GetMapping("/getAllUnAccepted")
+    public @ResponseBody ResponseEntity<?> getAllUnAcceptedResidences() {
+        return ResponseEntity.ok(residenceService.getAllResidences(0));
+    }
 
 
 
@@ -49,6 +53,7 @@ public class ResidenceController {
                 .country(residencePayload.getCountry())
                 .city(residencePayload.getCity())
                 .area(residencePayload.getArea())
+                .adminApproval(residencePayload.getAdminApproval())
                 .description(residencePayload.getDescription())
                 .floorCount(residencePayload.getFloorCount())
                 .bedrooms(residencePayload.getBedrooms())

@@ -14,10 +14,9 @@ public class ResidenceService {
     private ResidenceRepo residenceRepo;
 
 
-    public List<Residence> getAllResidences(){
-        return residenceRepo.findAll();
+    public Optional<List<Residence>> getAllResidences(int ans){
+        return residenceRepo.findByAdminApproval(ans);
     }
-
 
     public void addResidence(Residence residence){
          residenceRepo.save(residence);
@@ -31,9 +30,9 @@ public class ResidenceService {
 
     public Optional<List<Residence>> getOwnerResidences(String ownerEmail){
 
-    public Optional<Residence> getOwnerResidences(String ownerEmail){
 
-        return residenceRepo.findByOwnerEmail(ownerEmail);
+
+        return residenceRepo.findByOwnerEmailAndAdminApproval(ownerEmail,1);
     }
 
 }
