@@ -1,7 +1,8 @@
 package com.example.SES.payload;
+
+
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,38 +10,25 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResidencePayload {
+public class sellFurniturePayLoad {
 
 
-    private String ownerEmail;
+    @NotBlank
+    private String email;
 
-    private String price;
-    private String country;
-
-    private String city;
-    private int bedrooms;
-    private int bathrooms;
-
-
-    private String location;
-
+    private String type;
     private String description;
+    private String price;
+    private String phone;
 
-    private int area;
 
     @Min(1)
-    private int floorCount;
-
-    private List<String> services;
+    private String number;
 
     private List<String> images;
-
-
-
 
 }

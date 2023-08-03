@@ -32,6 +32,12 @@ public class ResidenceController {
     }
 
 
+    @GetMapping("/getOwnerHouses")
+    public @ResponseBody ResponseEntity<?> getOwnerResidences(@RequestParam String ownerEmail) {
+        return ResponseEntity.ok(residenceService.getOwnerResidences(ownerEmail));
+    }
+
+
 
 
     @PostMapping( value="/saveResidence",consumes = {"application/json"})
@@ -45,6 +51,8 @@ public class ResidenceController {
                 .area(residencePayload.getArea())
                 .description(residencePayload.getDescription())
                 .floorCount(residencePayload.getFloorCount())
+                .bedrooms(residencePayload.getBedrooms())
+                .bathrooms(residencePayload.getBathrooms())
                 .services(residencePayload.getServices())
                 .images(residencePayload.getImages())
                 .build();
