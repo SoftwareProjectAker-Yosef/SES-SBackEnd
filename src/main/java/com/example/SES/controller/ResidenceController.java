@@ -5,6 +5,7 @@ import com.example.SES.repository.ResidenceRepo;
 import com.example.SES.payload.ResidencePayload;
 
 import com.example.SES.services.ResidenceService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,11 @@ public class ResidenceController {
         return ResponseEntity.ok(residenceService.tempGetResidence(id));
     }
 
+
+    @GetMapping("/getResidencesForAds")
+    public @ResponseBody ResponseEntity<?> residencesAds() {
+        return ResponseEntity.ok(residenceService.residencesForAds());
+    }
 
     @GetMapping("/getOwnerHouses")
     public @ResponseBody ResponseEntity<?> getOwnerResidences(@RequestParam String ownerEmail) {
@@ -68,6 +74,16 @@ public class ResidenceController {
         return ResponseEntity.accepted().build();
     }
 
+
+    @PutMapping("/admin-approval")
+    public ResponseEntity<Residence> updateAdminApproval(@RequestParam Long id, @RequestParam int adminApproval) {
+        try {
+            Residence updatedResidence = residenceService.adminApproval(id, adminApproval);
+            return ResponseEntity.ok(updatedResidence);
+        } catch (EntityNotFoundException ex) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 
 
