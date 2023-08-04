@@ -12,11 +12,13 @@ public interface ResidenceRepo extends JpaRepository<Residence,Long> {
 
     Optional<List<Residence>> findByAdminApproval(int ans);
 
+    Optional<List<Residence>> findByAdNumberIsNot(int zero);
 
 
 
 
-    Optional<List<Residence>> findByOwnerEmail(String email);
+
+
   
 
 

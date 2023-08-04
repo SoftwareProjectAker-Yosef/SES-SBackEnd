@@ -7,6 +7,7 @@ import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class Residence {
 
 
     private int area;
-
+    @Setter
     private int adminApproval;
 
 
@@ -54,6 +55,7 @@ public class Residence {
 
     @Min(1)
     private int bedrooms;
+    private int adNumber;
 
     @ElementCollection
     private List <String> services;
@@ -61,7 +63,7 @@ public class Residence {
     @ElementCollection
     private List<String> images;
 
-    public Residence(Long id, String ownerEmail, String price, String description, int area, int adminApproval, String city, String country, String location, int floorCount, int bathrooms, int bedrooms, List<String> services, List<String> images) {
+    public Residence(Long id, String ownerEmail, String price, String description, int area, int adminApproval, String city, String country, String location, int floorCount, int bathrooms, int bedrooms, int adNumber, List<String> services, List<String> images) {
         this.id = id;
         this.ownerEmail = ownerEmail;
         this.price = price;
@@ -74,6 +76,7 @@ public class Residence {
         this.floorCount = floorCount;
         this.bathrooms = bathrooms;
         this.bedrooms = bedrooms;
+        this.adNumber = adNumber;
         this.services = services;
         this.images = images;
     }
