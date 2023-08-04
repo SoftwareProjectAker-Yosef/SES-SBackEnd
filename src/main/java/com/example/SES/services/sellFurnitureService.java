@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class sellFurnitureService {
@@ -35,6 +35,9 @@ public class sellFurnitureService {
         return furRepo.findByType(type);
     }
 
+    public Optional<sellFurniture> tempGetFur(Long id) {
+        return furRepo.findById(id);
+    }
     public void addFur(sellFurniture Fur) {
 
         furRepo.save(Fur);

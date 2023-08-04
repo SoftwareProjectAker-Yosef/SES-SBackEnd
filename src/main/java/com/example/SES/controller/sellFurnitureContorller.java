@@ -32,7 +32,10 @@ public class sellFurnitureContorller {
         return ResponseEntity.ok(furSer.getAllFur());
     }
 
-
+    @GetMapping("/test")
+    public @ResponseBody ResponseEntity<?> testGetFur(@RequestParam Long id) {
+        return ResponseEntity.ok(furSer.tempGetFur(id));
+    }
 
     @GetMapping("/getFurtype")
     public @ResponseBody
