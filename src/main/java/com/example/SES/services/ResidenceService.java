@@ -35,9 +35,9 @@ public class ResidenceService {
 
         }
 
-    public Optional<List<Residence>> residencesForAds (){
+    public Optional<List<Residence>> residencesForAdsAdmin (){
 
-        return residenceRepo.findByAdNumberIsNot(0);
+        return residenceRepo.findByAdNumberGreaterThan(4);
 
 
     }
@@ -55,6 +55,52 @@ public class ResidenceService {
             throw new EntityNotFoundException("Residence not found with id: " + residenceId);
         }
     }
+
+
+
+    public Residence adReq(Long residenceId) {
+        Optional<Residence> residenceOptional = tempGetResidence(residenceId);
+
+        if (residenceOptional.isPresent()) {
+            Residence residence = residenceOptional.get();
+            residence.setAdNumber(5);
+            return residenceRepo.save(residence);
+        } else {
+            // Handle the case where residenceId is not found
+            throw new EntityNotFoundException("Residence not found with id: " + residenceId);
+        }
+    }
+
+
+
+    public Optional<List<Residence>> residencesForAdsUser (){
+        return residenceRepo.findByAdNumberBetween(1,4);
+
+    }
+
+
+    public void acceptAd(Long residenceId){
+
+        residenceRepo.decrementAdNumberForRange1To4();
+        residenceRepo.decrementAdNumberById(residenceId);
+    }
+
+
+
+
+    public Residence resetAdReq(Long residenceId) {
+        Optional<Residence> residenceOptional = tempGetResidence(residenceId);
+
+        if (residenceOptional.isPresent()) {
+            Residence residence = residenceOptional.get();
+            residence.setAdNumber(0);
+            return residenceRepo.save(residence);
+        } else {
+            // Handle the case where residenceId is not found
+            throw new EntityNotFoundException("Residence not found with id: " + residenceId);
+        }
+    }
+
 
     }
 
