@@ -60,7 +60,6 @@ public class RentController {
                         .ownerEmail(rentPayload.getOwnerEmail())
                         .date(rentPayload.getDate())
                         .number(rentPayload.getNumber())
-                        .noMonth(rentPayload.getNoMonth())
                         .build()
         );
 
