@@ -8,6 +8,7 @@ import com.example.SES.services.ResidenceService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -37,10 +38,7 @@ public class ResidenceController {
     }
 
 
-    @GetMapping("/getResidencesForAds")
-    public @ResponseBody ResponseEntity<?> residencesAds() {
-        return ResponseEntity.ok(residenceService.residencesForAds());
-    }
+
 
     @GetMapping("/getOwnerHouses")
     public @ResponseBody ResponseEntity<?> getOwnerResidences(@RequestParam String ownerEmail) {
@@ -87,5 +85,52 @@ public class ResidenceController {
 
 
 
+    @GetMapping("/getResidencesForAdsAdmin")
+    public @ResponseBody ResponseEntity<?> residencesAdsAdmin() {
+        return ResponseEntity.ok(residenceService.residencesForAdsAdmin());
+    }
+
+
+    @GetMapping("/getResidencesForAdsUser")
+    public @ResponseBody ResponseEntity<?> residencesAdsUser() {
+        return ResponseEntity.ok(residenceService.residencesForAdsUser());
+    }
+
+
+@Transactional
+    @PutMapping("/requestAd")
+    public ResponseEntity<Residence> updateRequestAd(@RequestParam Long id) {
+        try {
+            Residence updatedResidence = residenceService.adReq(id);
+            return ResponseEntity.ok(updatedResidence);
+        } catch (EntityNotFoundException ex) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @Transactional
+    @PutMapping("/acceptAd")
+    public ResponseEntity<String> acceptAd(@RequestParam Long id) {
+        try {
+            residenceService.acceptAd(id);
+            return ResponseEntity.ok("Ad accepted and adNumber decremented successfully.");
+        } catch (Exception e) {
+            String errorMessage = "An error occurred while accepting the ad: " + e.getMessage();
+            return ResponseEntity.status(400).body(errorMessage);
+        }
+    }
+
+
+    @Transactional
+    @PutMapping("/declineAd")
+    public ResponseEntity<String> declineAd(@RequestParam Long id) {
+        try {
+            residenceService.resetAdReq(id);
+            return ResponseEntity.ok("Ad declined and adNumber decremented successfully.");
+        } catch (Exception e) {
+            String errorMessage = "An error occurred while accepting the ad: " + e.getMessage();
+            return ResponseEntity.status(400).body(errorMessage);
+        }
+    }
 
 }
