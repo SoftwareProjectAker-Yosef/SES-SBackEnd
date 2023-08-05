@@ -23,6 +23,6 @@ public class RentPayload {
     private String ownerEmail;
     private String date;
     private String number;
-    private String noMonth;
+
 
 }
