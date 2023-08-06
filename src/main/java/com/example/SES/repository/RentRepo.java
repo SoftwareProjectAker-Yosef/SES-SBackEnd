@@ -10,9 +10,11 @@ import java.util.Optional;
 
 public interface RentRepo extends JpaRepository<Rent,Long> {
 
-    Optional<Rent> findByEmail(String email);
+    Optional <List<Rent>> findByEmail(String email);
     List<Rent> findByNumber(String number);
     List<Rent> findByNumberAndDate(String number, String date);
+
+    Optional <List<Rent>> findByOwnerEmail(String email);
 
 
 

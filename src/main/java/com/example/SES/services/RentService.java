@@ -35,10 +35,17 @@ public class RentService {
     }
 
 
-    public Rent getRent(String email)  {
+    public Optional<List<Rent>> getRent(String email)  {
 
 
-        return rentrepo.findByEmail(email).orElseGet(()->Rent.builder().build());
+        return rentrepo.findByEmail(email);
+
+    }
+
+    public Optional<List<Rent>> getOwnerRent(String email)  {
+
+
+        return rentrepo.findByOwnerEmail(email);
 
     }
 
