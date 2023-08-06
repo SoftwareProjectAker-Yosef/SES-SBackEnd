@@ -35,7 +35,7 @@ public class RentController {
         this.rentservice = rentservice;
     }
 
-    @GetMapping("/getRent")
+    @GetMapping("/getAllRent")
     public @ResponseBody ResponseEntity<?> getAllRents() {
         return ResponseEntity.ok(rentservice.getAllRents());
     }
@@ -66,6 +66,15 @@ public class RentController {
         return ResponseEntity.accepted().build();
     }
 
+    @GetMapping("/getTenantReservations")
+    public @ResponseBody ResponseEntity<?> tenantReservations(@RequestParam String email) {
+        return ResponseEntity.ok(rentservice.getRent(email));
+    }
 
+
+    @GetMapping("/getOwnerReservations")
+    public @ResponseBody ResponseEntity<?> ownerReservations(@RequestParam String email) {
+        return ResponseEntity.ok(rentservice.getOwnerRent(email));
+    }
 
 }
