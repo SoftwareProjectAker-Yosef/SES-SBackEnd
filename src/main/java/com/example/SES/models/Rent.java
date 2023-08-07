@@ -1,15 +1,13 @@
 package com.example.SES.models;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Data
 @Builder
@@ -34,12 +32,12 @@ public class Rent {
 
 
 
-    public Rent(Long ID,String email1, String email2, String date, String id) {
-        this.id=ID;
+    public Rent(Long id,String email1, String email2, String date, String id2) {
+        this.id=id;
         this.email = email1;
         this.ownerEmail = email2;
         this.date = date;
-        this.number = id;
+        this.number = id2;
 
     }
 }
