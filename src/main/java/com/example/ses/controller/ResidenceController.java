@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,12 +23,12 @@ public class ResidenceController {
 
 
     @GetMapping("/getAll")
-    public @ResponseBody ResponseEntity<?> getAllResidences() {
+    public @ResponseBody ResponseEntity<Optional<List<Residence>>> getAllResidences() {
         return ResponseEntity.ok(residenceService.getAllResidences(1));
     }
 
     @GetMapping("/getAllUnAccepted")
-    public @ResponseBody ResponseEntity<?> getAllUnAcceptedResidences() {
+    public @ResponseBody ResponseEntity<Optional<List<Residence>>> getAllUnAcceptedResidences() {
         return ResponseEntity.ok(residenceService.getAllResidences(0));
     }
 
@@ -42,7 +43,7 @@ public class ResidenceController {
 
 
     @GetMapping("/getOwnerHouses")
-    public @ResponseBody ResponseEntity<?> getOwnerResidences(@RequestParam String ownerEmail) {
+    public @ResponseBody ResponseEntity<Optional<List<Residence>>> getOwnerResidences(@RequestParam String ownerEmail) {
         return ResponseEntity.ok(residenceService.getOwnerResidences(ownerEmail));
     }
 
@@ -87,13 +88,13 @@ public class ResidenceController {
 
 
     @GetMapping("/getResidencesForAdsAdmin")
-    public @ResponseBody ResponseEntity<?> residencesAdsAdmin() {
+    public @ResponseBody ResponseEntity<Optional<List<Residence>>> residencesAdsAdmin() {
         return ResponseEntity.ok(residenceService.residencesForAdsAdmin());
     }
 
 
     @GetMapping("/getResidencesForAdsUser")
-    public @ResponseBody ResponseEntity<?> residencesAdsUser() {
+    public @ResponseBody ResponseEntity<Optional<List<Residence>>>  residencesAdsUser() {
         return ResponseEntity.ok(residenceService.residencesForAdsUser());
     }
 
