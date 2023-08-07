@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @Entity
 @NoArgsConstructor
-public class sellFurniture {
+public class SellFurniture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,10 +48,10 @@ public class sellFurniture {
     private List<String> images;
 
 
-    public sellFurniture(Long ID,String email, String Type,String description, String price, String phone,String number,List<String> images) {
-        this.id=ID;
+    public SellFurniture(Long id1,String email, String type,String description, String price, String phone,String number,List<String> images) {
+        this.id=id1;
         this.email = email;
-        this.type=Type;
+        this.type=type;
         this.description=description;
         this.price=price;
         this.phone=phone;
