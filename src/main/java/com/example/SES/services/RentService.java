@@ -1,15 +1,12 @@
 package com.example.SES.services;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.example.SES.models.Rent;
-import com.example.SES.models.Residence;
-import com.example.SES.models.User;
+
 import com.example.SES.repository.RentRepo;
-import com.example.SES.repository.UserRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 

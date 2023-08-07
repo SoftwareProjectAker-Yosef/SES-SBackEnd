@@ -1,11 +1,9 @@
 package com.example.SES.controller;
 
 
-import com.example.SES.models.Rent;
 import com.example.SES.models.sellFurniture;
-import com.example.SES.payload.RentPayload;
 import com.example.SES.payload.sellFurniturePayLoad;
-import com.example.SES.repository.RentRepo;
+
 
 import com.example.SES.repository.sellFurnitureRepo;
 import com.example.SES.services.sellFurnitureService;

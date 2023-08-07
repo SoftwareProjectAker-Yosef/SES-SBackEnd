@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 import java.util.List;
-import java.util.Optional;
 
 public interface ResidenceRepo extends JpaRepository<Residence,Long> {
     Optional<List<Residence>> findByOwnerEmailAndAdminApproval(String email, int ans);
