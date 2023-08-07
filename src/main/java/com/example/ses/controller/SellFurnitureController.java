@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Fur")
@@ -28,12 +29,12 @@ public class SellFurnitureController {
 
     @GetMapping("/getFur")
     public @ResponseBody
-    ResponseEntity<?> getAllFur() {
+    ResponseEntity<List<SellFurniture>> getAllFur() {
         return ResponseEntity.ok(furSer.getAllFur());
     }
 
     @GetMapping("/test")
-    public @ResponseBody ResponseEntity<?> testGetFur(@RequestParam Long id) {
+    public @ResponseBody ResponseEntity<Optional<SellFurniture>> testGetFur(@RequestParam Long id) {
         return ResponseEntity.ok(furSer.tempGetFur(id));
     }
 

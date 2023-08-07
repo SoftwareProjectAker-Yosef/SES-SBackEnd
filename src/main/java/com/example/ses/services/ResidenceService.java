@@ -52,7 +52,7 @@ public class ResidenceService {
             return residenceRepo.save(residence);
         } else {
             // Handle the case where residenceId is not found
-            throw new EntityNotFoundException("Residence not found with id: " + residenceId);
+            throw new EntityNotFoundException("Residence was not found with id: " + residenceId);
         }
     }
 
@@ -67,7 +67,7 @@ public class ResidenceService {
             return residenceRepo.save(residence);
         } else {
             // Handle the case where residenceId is not found
-            throw new EntityNotFoundException("Residence not found with id: " + residenceId);
+            throw new EntityNotFoundException("Residence is not found with id: " + residenceId);
         }
     }
 
