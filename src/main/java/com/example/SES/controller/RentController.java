@@ -1,24 +1,19 @@
 package com.example.SES.controller;
 
 import com.example.SES.models.Rent;
-import com.example.SES.models.User;
+
 import com.example.SES.payload.RentPayload;
-import com.example.SES.payload.UserPayload;
+
 import com.example.SES.repository.RentRepo;
-import com.example.SES.repository.UserRepo;
+
 import com.example.SES.services.RentService;
-import com.example.SES.services.UserService;
-import jakarta.validation.Payload;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/rent")
