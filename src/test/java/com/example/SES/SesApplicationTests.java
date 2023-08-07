@@ -1,13 +1,11 @@
 package com.example.SES;
 
-import org.junit.jupiter.api.Test;
+import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
+@CucumberContextConfiguration
 @SpringBootTest
 class SesApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
 
 }
