@@ -1,7 +1,6 @@
 package com.example.SES.controller;
 
 import com.example.SES.models.Residence;
-import com.example.SES.repository.ResidenceRepo;
 import com.example.SES.payload.ResidencePayload;
 
 import com.example.SES.services.ResidenceService;
@@ -10,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/residence")
@@ -33,7 +34,7 @@ public class ResidenceController {
 
 
     @GetMapping("/test")
-    public @ResponseBody ResponseEntity<?> testGetResidence(@RequestParam Long id) {
+    public @ResponseBody ResponseEntity<Optional<Residence>> testGetResidence(@RequestParam Long id) {
         return ResponseEntity.ok(residenceService.tempGetResidence(id));
     }
 
