@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(originPatterns = "*")
@@ -19,24 +21,24 @@ public class UserController {
     private UserRepo userRepo;
 
     @GetMapping("/")
-    public @ResponseBody ResponseEntity<?> getAllUsers() {
+    public @ResponseBody ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
     @GetMapping("/getUser")
-    public @ResponseBody ResponseEntity<?> getByEmail( @RequestParam String email) {
+    public @ResponseBody ResponseEntity<User> getByEmail( @RequestParam String email) {
         return ResponseEntity.ok(userService.getUser(email));
     }
 
 
 
     @GetMapping("/checkUserExistence")
-    public @ResponseBody ResponseEntity userExists(@RequestParam String email) {
+    public @ResponseBody ResponseEntity<Boolean> userExists(@RequestParam String email) {
         return ResponseEntity.ok(userService.userExists(email));
     }
 
     @PostMapping("/checkPassword")
-    public @ResponseBody ResponseEntity checkPassword(@RequestParam String email, String password) {
+    public @ResponseBody ResponseEntity<Boolean> checkPassword(@RequestParam String email, String password) {
         return ResponseEntity.ok(userService.getUser(email).getPassword().equals(password));
     }
 
