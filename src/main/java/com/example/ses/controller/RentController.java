@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -31,17 +33,17 @@ public class RentController {
     }
 
     @GetMapping("/getAllRent")
-    public @ResponseBody ResponseEntity<?> getAllRents() {
+    public @ResponseBody ResponseEntity<List<Rent>> getAllRents() {
         return ResponseEntity.ok(rentservice.getAllRents());
     }
 
     @GetMapping("/getAllRentDates")
-    public @ResponseBody ResponseEntity<?> getAllRentDates() {
+    public @ResponseBody ResponseEntity<List<String>> getAllRentDates() {
         return ResponseEntity.ok(rentservice.getAllRentDates());
     }
 
     @GetMapping("/dates")
-    public @ResponseBody ResponseEntity<?> getDatesByNumber(@RequestParam String number) {
+    public @ResponseBody ResponseEntity<List<String>> getDatesByNumber(@RequestParam String number) {
 
         return ResponseEntity.ok(rentservice.getAllDatesByNumber(number));
     }
@@ -62,13 +64,13 @@ public class RentController {
     }
 
     @GetMapping("/getTenantReservations")
-    public @ResponseBody ResponseEntity<?> tenantReservations(@RequestParam String email) {
+    public @ResponseBody ResponseEntity<Optional<List<Rent>>> tenantReservations(@RequestParam String email) {
         return ResponseEntity.ok(rentservice.getRent(email));
     }
 
 
     @GetMapping("/getOwnerReservations")
-    public @ResponseBody ResponseEntity<?> ownerReservations(@RequestParam String email) {
+    public @ResponseBody ResponseEntity<Optional<List<Rent>>> ownerReservations(@RequestParam String email) {
         return ResponseEntity.ok(rentservice.getOwnerRent(email));
     }
 

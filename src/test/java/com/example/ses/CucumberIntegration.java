@@ -1,4 +1,4 @@
-package com.example.SES;
+package com.example.ses;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
