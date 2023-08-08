@@ -50,7 +50,7 @@ public class RentController {
 
 
     @PostMapping( value="/saveRent",consumes = {"application/json"})
-    public @ResponseBody ResponseEntity<?> addRentToDb(@RequestBody RentPayload rentPayload) {
+    public @ResponseBody ResponseEntity<Void> addRentToDb(@RequestBody RentPayload rentPayload) {
         rentservice.addRent(
                 Rent.builder()
                         .email(rentPayload.getEmail())
