@@ -1,16 +1,25 @@
-#Feature:order
-#
-#  Scenario: admin sign in with right credentials and tries to add a order
-#    Given 'amr'|'test123'
-#    When the client calls "/api/auth/signin"
-#    Then the client receives status code of [200]
-#    Given request body
-#      | name               | estimated           | productsIDs | productsQuantities | customerID |
-#      | String             | String              | List        | List               | Integer    |
-#      | Amr's Blue3 Carpet | 2023-02-19T10:00:00 | 1           | 1                  | 1          |
-#    When the client after auth "POST" "/order/save"
-#    Then the client receives status code of [200]
-#
+Feature:order
+
+  Scenario: Admin signs in with the right credentials and tries to add an order
+
+    When the client after auth "GET" "/user/"
+
+    Then the client receives status code of 200
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #  Scenario: admin sign in with right credentials and tries to get all orders
 #    Given 'amr'|'test123'
 #    When the client calls "/api/auth/signin"

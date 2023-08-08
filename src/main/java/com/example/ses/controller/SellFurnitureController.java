@@ -47,7 +47,7 @@ public class SellFurnitureController {
 
 
     @PostMapping( value="/saveFur",consumes = {"application/json"})
-    public @ResponseBody ResponseEntity<?> addFurToDb(@RequestBody SellFurniturePayLoad furPayLoad) {
+    public @ResponseBody ResponseEntity<Void> addFurToDb(@RequestBody SellFurniturePayLoad furPayLoad) {
         furSer.addFur(
                 SellFurniture.builder()
                         .email(furPayLoad.getEmail())

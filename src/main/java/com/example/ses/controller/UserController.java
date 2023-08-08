@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping( value="/saveUser",consumes = {"application/json"})
-    public @ResponseBody ResponseEntity<?> addUserToDb(@RequestBody UserPayload userPayload) {
+    public @ResponseBody ResponseEntity<Void> addUserToDb(@RequestBody UserPayload userPayload) {
         userService.addUser(
                 User.builder()
                         .email(userPayload.getEmail())

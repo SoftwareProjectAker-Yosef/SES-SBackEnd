@@ -51,7 +51,7 @@ public class ResidenceController {
 
 
     @PostMapping( value="/saveResidence",consumes = {"application/json"})
-    public ResponseEntity<?> addResidenceToDb(@RequestBody ResidencePayload residencePayload) {
+    public ResponseEntity<Void> addResidenceToDb(@RequestBody ResidencePayload residencePayload) {
         Residence residence = Residence.builder()
                 .ownerEmail(residencePayload.getOwnerEmail())
                 .price(residencePayload.getPrice())
