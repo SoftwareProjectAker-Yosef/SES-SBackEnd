@@ -1,16 +1,12 @@
-package com.example.ses.cucumberGlue;
+package com.example.ses;
 
-import io.cucumber.datatable.DataTable;
-import io.cucumber.java.ParameterType;
-import io.cucumber.java.en.Given;
+import com.example.ses.SpringIntegrationTests;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.tomcat.util.buf.StringUtils;
 import org.junit.jupiter.api.Assertions;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,37 +15,15 @@ import java.io.OutputStream;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
-import io.cucumber.datatable.DataTable;
-import io.cucumber.java.ParameterType;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.apache.tomcat.util.buf.StringUtils;
-import org.junit.jupiter.api.Assertions;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.web.client.HttpClientErrorException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.CookieManager;
-import java.net.HttpCookie;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.*;
-import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
-import static org.springframework.http.HttpMethod.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-public class StepDefs{
+public class StepDefs extends SpringIntegrationTests {
     private final String baseUrl = "http://localhost:9090";
     private HttpStatusCode lastStatusCode;
     private ResponseEntity<String> lastResponse;
@@ -131,6 +105,13 @@ public class StepDefs{
             lastStatusCode = HttpStatusCode.valueOf(401);
             System.out.println(lastStatusCode);
         }
+    }
+
+
+    @When("the client calls {string} with the request body:")
+    public void whenClientCallsWithRequestBody(String endpoint, String requestBody) {
+        this.lastRequest = requestBody;
+        sendRequest(endpoint, "POST", requestBody);
     }
     // Define a parameter type to convert the request body from the feature file.
 
